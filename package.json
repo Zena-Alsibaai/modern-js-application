@@ -1,0 +1,23 @@
+{
+  "name": "character-manager-js",
+  "version": "1.0.0",
+  "description": "Projet Js",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zena-Alsibaai/character-manager-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zena-Alsibaai/character-manager-js/issues"
+  },
+  "homepage": "https://github.com/Zena-Alsibaai/character-manager-js#readme"
+}
