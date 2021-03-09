@@ -16,7 +16,6 @@ document
   .getElementById("createSubmit")
   .addEventListener("click", async (event) => {
     event.preventDefault();
-
     getValue();
     try {
       const response = await fetch(url, {
@@ -26,7 +25,6 @@ document
         },
         body: JSON.stringify(getValue()),
       });
-      //const freshHero = await response.json();
     } catch (error) {
       console.log(error);
     }
@@ -53,8 +51,6 @@ async function getData() {
   const response = await fetch(url);
   const heroes = await response.json(); //transforme le format de l'url en format json pour pouvoir le lire
 
-  console.log(heroes);
-
   heroes.forEach(({ name, shortDescription, image, id, description }) => {
     const clone = template.cloneNode(true).content;
     const img = "data:image/jpeg;base64," + image;
@@ -62,7 +58,7 @@ async function getData() {
     clone.querySelector(".card-img-top").src = img;
     clone.querySelector(".card-title").textContent = name;
     clone.querySelector(".card-text").textContent =
-      shortDescription + description;
+      shortDescription;
 
     clone.querySelector("#delete").addEventListener("click", async () => {
       console.log(id);
@@ -76,7 +72,6 @@ async function getData() {
     });
 
     clone.querySelector("#edit").addEventListener("click", async () => {
-      //console.log(id)
       affichageWindow(createWindow); //ouvre le modal sur la page
 
       let response = await fetch(`${url}/${id}`);
@@ -94,21 +89,17 @@ async function getData() {
           "Content-Type": "application/json",
         },
       });
-      //document.location.reload();
     });
 
     clone.querySelector("#info-btn").addEventListener("click", async () => {
       affichageWindow(heroInfo); //ouvre le modal sur la page
-      console.log(name);
 
       let response = await fetch(`${url}/${id}`);
       const hero = await response.json();
 
       //affichage
       document.getElementById("name-hero").value = name;
-
       document.getElementById("shortDescription-hero").value = shortDescription;
-
       document.getElementById("description-hero").value = description;
 
       response = fetch(`${url}/${id}`, {
