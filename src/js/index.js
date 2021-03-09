@@ -57,11 +57,9 @@ async function getData() {
 
     clone.querySelector(".card-img-top").src = img;
     clone.querySelector(".card-title").textContent = name;
-    clone.querySelector(".card-text").textContent =
-      shortDescription;
+    clone.querySelector(".card-text").textContent = shortDescription;
 
     clone.querySelector("#delete").addEventListener("click", async () => {
-      console.log(id);
       const response = await fetch(`${url}/${id}`, {
         method: "DELETE",
         headers: {
@@ -98,9 +96,11 @@ async function getData() {
       const hero = await response.json();
 
       //affichage
-      document.getElementById("name-hero").value = name;
-      document.getElementById("shortDescription-hero").value = shortDescription;
-      document.getElementById("description-hero").value = description;
+
+      document.getElementById("name-hero").innerHTML = hero.name;
+      document.getElementById("shortDescription-hero").innerHTML =
+        hero.shortDescription;
+      document.getElementById("description-hero").innerHTML = hero.description;
 
       response = fetch(`${url}/${id}`, {
         method: "GET",
