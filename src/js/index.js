@@ -61,7 +61,6 @@ async function getData() {
       shortDescription;
 
     clone.querySelector("#delete").addEventListener("click", async () => {
-      console.log(id);
       const response = await fetch(`${url}/${id}`, {
         method: "DELETE",
         headers: {
